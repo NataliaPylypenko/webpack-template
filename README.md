@@ -83,23 +83,6 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import './common.js'
 ```
 
-## Create Another PUG Files:
-
-#### Third method: (BEST)
-Сombine the first method and the second.
-Example:
-``` js
-    ...PAGES.map(page => new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/${page}`,
-      filename: `./${page.replace(/\.pug/,'.html')}`
-    }))
-    new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/about/index.pug`,
-      filename: './about/index.html',
-      inject: true
-    })
-```
-
 ## Add Fonts:
 Add @font-face in `/assets/scss/utils/fonts.scss`:
 
@@ -120,7 +103,6 @@ Add vars for font in `/assets/scss/utils/vars.scss`:
 ``` scss
 $mySecontFont : 'Helvetica-Base', Arial, sans-serif;
 ```
-
 
 ## License
 [MIT](./LICENSE)
