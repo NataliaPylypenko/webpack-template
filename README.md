@@ -82,7 +82,6 @@ import './common.js'
 
 ## Create Another HTML Files:
 
-
 ``` js 
     ...PAGES.map(
       page =>
@@ -129,6 +128,8 @@ Add vars for font in `/assets/scss/utils/vars.scss`:
 $mainFont : 'Montserrat', sans-serif;
 ```
 
+<h1>Deploy:</h1>
+
 ## GitHub Pages
 
 * Go to Settings / Pages
@@ -151,7 +152,8 @@ $mainFont : 'Montserrat', sans-serif;
 * Install the package `npm install gh-pages`
 * For deploy to the branch gh-pages `npm run deploy`
 
-## License
+<h1>License</h1>
+
 [MIT](./LICENSE)
 
 Copyright (c) 2018-present, [Evgenii Vedegis](https://github.com/vedees).

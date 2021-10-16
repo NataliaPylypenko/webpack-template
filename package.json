@@ -1,7 +1,7 @@
 {
   "name": "webpacktemplate",
   "version": "1.0.0",
-  "description": "webpack + pug",
+  "description": "webpack",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
@@ -12,7 +12,7 @@
     "> 1%",
     "last 3 version"
   ],
-  "author": "https://github.com/vedees",
+  "author": "https://github.com/NataliaPylypenko",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.15.8",
