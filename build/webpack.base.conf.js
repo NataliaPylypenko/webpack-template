@@ -118,7 +118,7 @@ module.exports = {
   resolve: {
     alias: {
       '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
-      '@': `${PATHS.src}/js` // Example: import Sort from "@/utils/sort.js"
+      '@js': `${PATHS.src}/js` // Example: import Sort from "@js/utils/sort.js"
     }
   },
   plugins: [

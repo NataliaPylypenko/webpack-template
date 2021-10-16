@@ -1,15 +1,13 @@
-<div align="center">
-  <h1>Webpack Template</h1>
-  <p>
+<h1>Webpack Template</h1>
+<p>
     Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
-  </p>
- </div>
+</p>
 
 ## Build Setup:
 
 ``` bash
 # Download repository:
-git clone https://github.com/vedees/webpack-template-pug webpack-template
+git clone https://github.com/NataliaPylypenko/webpack-template.git webpack-template
 
 # Go to the app:
 cd webpack-template
@@ -27,16 +25,15 @@ npm run build
 ## Project Structure:
 
 * `src/index.js` - main app file where you include/import all required libs and init app
+* `src/index.html` - custom layout for pages
+* `src/js` - put custom app scripts here
 * `src/static/` - folder with extra static assets that will be copied into output folder
-* `src/.html` - custom layout for pages
 * `src/assets/scss` - put custom app SCSS styles here. You need to import them in `index.js`
 * `src/assets/css` - the same as above but CSS here. You need to import them in `index.js`
 * `src/assets/img` - put images here. You need to use correct path: `assets/img/some.jpg`
-* `src/js` - put custom app scripts here
+* `src/assets/fonts` - put fonts here.
 
-<div align="center">
-  <h2>Settings:</h2>
-</div>
+<h1>Settings:</h1>
 
 ## Main const:
 Easy way to move all files.
@@ -66,7 +63,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 ## Import only SASS or CSS libs:
 1. Install libs
-2. Go to `/assets/scss/utils/libs.scss`
+2. Go to `/assets/scss/libs/libs.scss`
 3. Import libs in node modules
 ``` scss
 // Sass librarys example:
@@ -83,46 +80,80 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import './common.js'
 ```
 
-## Create Another PUG Files:
+## Create Another HTML Files:
 
-#### Third method: (BEST)
-Сombine the first method and the second.
-Example:
-``` js
-    ...PAGES.map(page => new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/${page}`,
-      filename: `./${page.replace(/\.pug/,'.html')}`
-    }))
-    new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/about/index.pug`,
-      filename: './about/index.html',
-      inject: true
-    })
+
+``` js 
+    ...PAGES.map(
+      page =>
+      new HtmlWebpackPlugin({
+        template: `${PAGES_DIR}/${page}`,
+        filename: `./${page}`
+      })
+    )
 ```
 
 ## Add Fonts:
+
+### First way
 Add @font-face in `/assets/scss/utils/fonts.scss`:
 
 ``` scss
-// Example with Helvetica
+// Example with Montserrat
 @font-face {
-  font-family: "Helvetica-Base";
-  src: url('/assets/fonts/Helvetica/Base/Helvetica-Base.eot'); /* IE9 Compat Modes */
-  src: url('/assets/fonts/Helvetica/Base/Helvetica-Base.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/Helvetica/Base/Helvetica-Base.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/assets/fonts/Helvetica/Base/Helvetica-Base.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/Helvetica/Base/Helvetica-Base.svg') format('svg'); /* Legacy iOS */
+  font-family: "Montserrat-Regular";
+  src: url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.svg') format('svg'); /* Legacy iOS */
 }
 ```
 
 Add vars for font in `/assets/scss/utils/vars.scss`:
 
 ``` scss
-$mySecontFont : 'Helvetica-Base', Arial, sans-serif;
+$mainFont : 'Montserrat-Regular', Helvetica, Arial, sans-serif;
 ```
 
+### Second way
+Add @import in `/assets/scss/main.scss`:
+
+``` scss
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+```
+
+Add vars for font in `/assets/scss/utils/vars.scss`:
+
+``` scss
+$mainFont : 'Montserrat', sans-serif;
+```
+
+## GitHub Pages
+
+* Go to Settings / Pages
+* In the tab GitHub Pages find Source, select branch main, push the Save
+* Сopy the unique link (UL)
+* Then go to the project on package.json
+
+``` js
+...
+"homepage": "UL EX(https://nataliapylypenko.github.io/portfolio/)",
+...
+"scripts": {
+    ...
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
+  },
+...
+```
+
+* Install the package `npm install gh-pages`
+* For deploy to the branch gh-pages `npm run deploy`
 
 ## License
 [MIT](./LICENSE)
 
-Copyright (c) 2018-present, [Evgenii Vedegis](https://github.com/vedees)
+Copyright (c) 2018-present, [Evgenii Vedegis](https://github.com/vedees).
+
+With my additions!
