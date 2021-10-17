@@ -11,8 +11,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // с такой структурой можно будет изменить название путей и автоматически поменяются названия папок
 const PATHS = {
   src: path.join(__dirname, '../src'),
+  // __dirname - системная переменная - текущая директория
   dist: path.join(__dirname, '../dist'), // здесь можем поменять название папки
-  assets: 'assets/' // и здесь
+  assets: 'assets/' // и здесь можем поменять название папки
 }
 
 // Pages const for HtmlWebpackPlugin
@@ -28,12 +29,16 @@ module.exports = {
   },
   // точка входа
   entry: {
-    // module: `${PATHS.src}/your-module.js`,
     app: PATHS.src, // путь к входному файлу js
+    // module: `${PATHS.src}/your-module.js`,
+    libs: `${PATHS.src}/js` // путь к библиотекам подключенным не через NM или другие файлы js
   },
   // точка выхода
   output: {
-    filename: `${PATHS.assets}js/[name].[hash].js`, //текущий name ссылается на ярлык app, вместо name подставляется app
+    // какой файл получим
+    //  текущий name ссылается на ярлык app, вместо name подставляется app
+    filename: `${PATHS.assets}js/[name].[hash].js`,
+    // куда складываем
     path: PATHS.dist,
     /*
       publicPath: '/' - relative path for dist folder (js,css etc)
@@ -41,9 +46,12 @@ module.exports = {
     */
     publicPath: '/'
   },
+  //Ускоряем загрузку JavaScripts благодаря Code Splitting в вебпаке!
   optimization: {
+    // Создаем отдельный vendors.js файл под все библиотеки.
     splitChunks: {
       cacheGroups: {
+        // обьект, который будем кешировать
         vendor: {
           name: 'vendors',
           test: /node_modules/,
@@ -117,8 +125,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
-      '@js': `${PATHS.src}/js` // Example: import Sort from "@js/utils/sort.js"
+      '~': PATHS.src, // Example: import main_bg from "~/assets/img/main_bg.jpg"
+      '@js': `${PATHS.src}/js` // Example: import Sort from "@js/libs/sort.js"
     }
   },
   plugins: [
