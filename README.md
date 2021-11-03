@@ -128,6 +128,10 @@ Add vars for font in `/assets/scss/utils/vars.scss`:
 $mainFont : 'Montserrat', sans-serif;
 ```
 
+## Webpack-dev-server
+
+* Install the package `npm i -D webpack-dev-server`
+
 <h1>Deploy:</h1>
 
 ## GitHub Pages
@@ -139,7 +143,7 @@ $mainFont : 'Montserrat', sans-serif;
 
 ``` js
 ...
-"homepage": "UL EX(https://nataliapylypenko.github.io/portfolio/)",
+"homepage": "https://nataliapylypenko.github.io/portfolio/",
 ...
 "scripts": {
     ...

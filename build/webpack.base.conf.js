@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const isDev = process.env.NODE_ENV === 'development'
+
 // Разделяем конфиги в package.json: 1. Merge; 2. ENV;
 
 // Main const
@@ -37,7 +39,7 @@ module.exports = {
   output: {
     // какой файл получим
     //  текущий name ссылается на ярлык app, вместо name подставляется app
-    filename: `${PATHS.assets}js/[name].[hash].js`,
+    filename: `${PATHS.assets}js/[name].[chunkhash].js`,
     // куда складываем
     path: PATHS.dist,
     /*
@@ -50,7 +52,9 @@ module.exports = {
   optimization: {
     // Создаем отдельный vendors.js файл под все библиотеки.
     splitChunks: {
-      cacheGroups: {
+      cacheGroups:
+
+          {
         // обьект, который будем кешировать
         vendor: {
           name: 'vendors',
@@ -125,13 +129,13 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '~': PATHS.src, // Example: import main_bg from "~/assets/img/main_bg.jpg"
+      '@': PATHS.src, // Example: import main_bg from "@/assets/img/main_bg.jpg"
       '@js': `${PATHS.src}/js` // Example: import Sort from "@js/libs/sort.js"
     }
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[hash].css`,
+      filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
 
     new CopyWebpackPlugin([
@@ -146,7 +150,10 @@ module.exports = {
       page =>
       new HtmlWebpackPlugin({
         template: `${PAGES_DIR}/${page}`,
-        filename: `./${page}`
+        filename: `./${page}`,
+        minify: {
+          collapseWhitespace: !isDev
+        }
       })
     )
   ]
