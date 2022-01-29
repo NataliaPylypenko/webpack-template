@@ -8,7 +8,7 @@ node_modules
 
 # Folders
 test
-dist
+web
 
 # Logs:
 *.log

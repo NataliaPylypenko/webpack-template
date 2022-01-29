@@ -1,0 +1,27 @@
+// LIBS
+@import 'libs/swiper/swiper-bundle.min.css';
+@import 'libs/bootstrap/bootstrap.min.css';
+
+// UTILS
+@import "utils/media";
+@import "utils/mixins";
+@import "utils/page-content";
+@import "utils/reset";
+@import "utils/vars";
+
+// COMPONENTS > COMMON - общие стили
+@import 'components/common/footer';
+@import 'components/common/header';
+@import 'components/common/main';
+@import 'components/common/buttons';
+@import 'components/common/title';
+@import 'components/common/custom-cursor';
+
+// COMPONENTS > HOME
+@import 'components/home/swiper-scene';
+
+// COMPONENTS > NAME - секции страниц
+
+// PAGES - страницы
+@import 'pages/home';
+@import 'pages/news';

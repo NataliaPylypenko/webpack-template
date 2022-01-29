@@ -1,8 +1,8 @@
 module.exports = {
   plugins: [
-    require('autoprefixer'), // добавляет автопрефиксы
-    require('css-mqpacker'), // групирует все медиа запросы
-    require('cssnano')({  // удаляет комментарии для продакшн
+    require('autoprefixer'),
+    require('css-mqpacker'),
+    require('cssnano')({
       preset: [
         'default', {
           discardComments: {
