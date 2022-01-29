@@ -24,14 +24,16 @@ npm run build
 
 ## Project Structure:
 
-* `src/index.js` - main app file where you include/import all required libs and init app
-* `src/index.html` - custom layout for pages
-* `src/js` - put custom app scripts here
+* `src/js/[name].js` - main application files where you include/import all necessary libraries and modules for initialization
+* `src/js/libs` - put libs here
+* `src/js/modules` - put custom app scripts here
+* `src/html/pages/[name].html` - layout for pages
+* `src/html/component/[name]/[component].html` - components for pages
+* `src/scss/[name].scss` - main SCSS styles where you include/import all necessary styles. You need to import them in `[name].js`
+* `src/scss/[name]/[component].scss` - put components SCSS styles here. You need to import them in `[name].scss`
+* `src/scss/libs` - put libs SCSS styles here
+* `src/img` - put images here. You need to use correct path: `img/some.jpg`
 * `src/static/` - folder with extra static assets that will be copied into output folder
-* `src/assets/scss` - put custom app SCSS styles here. You need to import them in `index.js`
-* `src/assets/css` - the same as above but CSS here. You need to import them in `index.js`
-* `src/assets/img` - put images here. You need to use correct path: `assets/img/some.jpg`
-* `src/assets/fonts` - put fonts here.
 
 <h1>Settings:</h1>
 
@@ -43,15 +45,13 @@ const PATHS = {
   // Path to main app dir
   src: path.join(__dirname, '../src'),
   // Path to Output dir
-  dist: path.join(__dirname, '../dist'),
-  // Path to Second Output dir (js/css/fonts etc folder)
-  assets: 'assets/'
+  web: path.join(__dirname, '../web'),
 }
 ```
 
 ## Import Another libs:
 1. Install libs
-2. Import libs in `./index.js`
+2. Import libs in `js/[name].js`
 ``` js
 // React example
 import React from 'react'
@@ -63,31 +63,31 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 ## Import only SASS or CSS libs:
 1. Install libs
-2. Go to `/assets/scss/libs/libs.scss`
-3. Import libs in node modules
+2. Import libs in `scss/[name].scss`
 ``` scss
-// Sass librarys example:
-@import '../../node_modules/spinners/stylesheets/spinners';
 // CSS librarys example:
-@import '../../node_modules/flickity/dist/flickity.css';
+@import 'libs/swiper/swiper-bundle.min.css';
 ```
 
 ## Import js files:
-1. Create another js module in `./js/` folder
-2. Import modules in `./js/index.js` file
+1. Create custom js module in `js/modules` folder
+2. Import modules in `js/[name].js` file
 ``` js
-// another js file for example
-import './common.js'
+// custom js file for example
+import customCursor from './modules/customCursor'
 ```
 
 ## Create Another HTML Files:
-
 ``` js 
+    const PAGES_DIR = PATHS.src
+    const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.html'))
+
     ...PAGES.map(
       page =>
       new HtmlWebpackPlugin({
         template: `${PAGES_DIR}/${page}`,
-        filename: `./${page}`
+        filename: `./html/${page}`,
+        // inject: false
       })
     )
 ```
@@ -95,7 +95,7 @@ import './common.js'
 ## Add Fonts:
 
 ### First way
-Add @font-face in `/assets/scss/utils/fonts.scss`:
+Add @font-face in `/scss/utils/fonts.scss`:
 
 ``` scss
 // Example with Montserrat
@@ -116,7 +116,7 @@ $mainFont : 'Montserrat-Regular', Helvetica, Arial, sans-serif;
 ```
 
 ### Second way
-Add @import in `/assets/scss/main.scss`:
+Add @import in `/scss/common.scss`:
 
 ``` scss
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
@@ -128,9 +128,6 @@ Add vars for font in `/assets/scss/utils/vars.scss`:
 $mainFont : 'Montserrat', sans-serif;
 ```
 
-## Webpack-dev-server
-
-* Install the package `npm i -D webpack-dev-server`
 
 <h1>Deploy:</h1>
 
@@ -138,7 +135,7 @@ $mainFont : 'Montserrat', sans-serif;
 
 * Go to Settings / Pages
 * In the tab GitHub Pages find Source, select branch main, push the Save
-* Сopy the unique link (UL)
+* Copy the unique link (UL)
 * Then go to the project on package.json
 
 ``` js
@@ -147,14 +144,17 @@ $mainFont : 'Montserrat', sans-serif;
 ...
 "scripts": {
     ...
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d web",
     "predeploy": "npm run build"
   },
 ...
 ```
 
 * Install the package `npm install gh-pages`
+* Go to Settings / Pages
+* In the tab GitHub Pages find Source, select branch gh-pages, push the Save
 * For deploy to the branch gh-pages `npm run deploy`
+
 
 <h1>License</h1>
 
