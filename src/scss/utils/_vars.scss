@@ -1,15 +1,27 @@
-// Colors
-$success: #3A1F5C;
-$primary: #7FFA35;
-
-$black: #000;
-$dark: #333;
-$light: #eee;
-$white: #fff;
-
-
-
-$transition: cubic-bezier(.4, 0, 0, 1);
-
+// Font
 $ff_main: 'Montserrat';
 $ff_accent: 'Homenaje';
+
+// Size
+$mainFontColor           : #101010;
+$mainFontSize            : 18px;
+$mainFontWeight          : 400;
+$mainLineHeight          : 1.4;
+
+// Main color
+$danger-color            : #fc5c65;
+$warning-color           : #fed330;
+$success-color           : #7ffa35;
+$primary-color           : #444ce0;
+$purple-color            : #3a1f5c;
+
+// Neutral Color
+$neutral-black           : #000;
+$neutral-dark            : #303133;
+$neutral-regular         : #606266;
+$neutral-secondary       : #909399;
+$neutral-light           : #C0C4CC;
+$neutral-white           : #fff;
+
+// Animation
+$transition: cubic-bezier(.4, 0, 0, 1);

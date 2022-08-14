@@ -1,10 +1,9 @@
-@import "../../utils/vars";
+@import "../utils/media";
+@import "../utils/vars";
 
 .showcase {
-  background-color: #000;
-  height: 100%;
   position: relative;
-  color: #fff;
+  color: $neutral-white;
   overflow: hidden;
   &::before {
     content: '';
@@ -12,7 +11,7 @@
     height: 100%;
     position: absolute;
     z-index: 1;
-    box-shadow: inset 0 0 500px #000;
+    box-shadow: inset 0 0 500px $neutral-black;
   }
   &::after {
     content: '';
@@ -56,9 +55,9 @@
     top: 40px;
     font-family: $ff_accent, sans-serif;
     font-size: 32px;
-    color: rgba(255, 255, 255, .75);
+    color: rgba($neutral-white, .75);
     span {
-      color: $primary;
+      color: $success-color;
     }
   }
 }
@@ -90,7 +89,7 @@
       width: 100%;
       font-family: $ff_accent, sans-serif;
       font-size: 32px;
-      color: rgba($white, .5);
+      color: rgba($neutral-white, .5);
       text-shadow: rgb(58, 78, 94) 0 0 10px;
     }
     &.swiper-slide-active {
@@ -144,7 +143,7 @@
 }
 
 .showcase-carousel__image {
-  border: 1px solid $primary;
+  border: 1px solid $success-color;
 }
 
 

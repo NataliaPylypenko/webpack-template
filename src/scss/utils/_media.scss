@@ -1,38 +1,51 @@
 // Media query breakpoints
-$desktopMax-plus:   (min-width: 1495px);
-$desktop:     		(min-width: 1200px);
+$desktopMax-plus:   (min-width: 1920px);
+$desktop-plus:      (min-width: 1495px);
+$laptop-plus:   	(min-width: 1200px);
 $tablet-plus: 		(min-width: 992px);
+$mobile-plus:    	(min-width: 768px);
 
-$desktopMax:     	(max-width: 1494px);
+$desktopMax:       	(max-width: 1919px);
+$desktop:       	(max-width: 1493px);
 $laptop:      		(max-width: 1199px);
 $tablet:      		(max-width: 991px);
 $mobile:      		(max-width: 767px);
-$mobile-sm:   		(max-width: 575px);
+$mobile-sm:   		(max-width: 639px);
 
 
 @media #{$desktopMax-plus}{
 	.container {
-	    max-width: 1320px;
+		max-width: 1800px;
 	}
 }
 @media #{$desktopMax}{
+	.container {
+	    max-width: 1434px;
+	}
+}
+@media #{$desktop}{
 	.container {
 		max-width: 1140px;
 	}
 }
 @media #{$laptop}{
 	.container {
-	    max-width: 960px;
+	    max-width: 962px;
 	}
 }
 @media #{$tablet}{
 	.container {
-	    max-width: 720px;
+	    max-width: 738px;
 	}
 }
 @media #{$mobile}{
 	.container {
-		max-width: 320px;
+		max-width: 620px;
+	}
+}
+@media #{$mobile-sm}{
+	.container {
+		max-width: 100%;
 	}
 }
 

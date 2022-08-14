@@ -1,5 +1,8 @@
+@import "../utils/media";
+@import "../utils/vars";
+
 .header {
-    background-color: black;
+    background-color: $neutral-dark;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +36,7 @@
         position: relative;
         margin-right: 45px;
         font-weight: bold;
-        color: #000;
+        color: $neutral-white;
         &:after {
             content: '';
             position: absolute;
@@ -43,7 +46,7 @@
             bottom: -1px;
             z-index: -1;
             height: 8px;
-            background: $primary;
+            background: $success-color;
         }
         &:last-child {
             margin-right: 0;

@@ -20,3 +20,16 @@
   ::-moz-placeholder          {@content}
   :-ms-input-placeholder      {@content}
 }
+
+@mixin media-query($break-point) {
+  @if $break-point == lg {
+    @media (max-width: 1250px) { @content }
+  }
+  @if $break-point == md {
+    @media (max-width: 900px) { @content }
+  }
+  @if $break-point == sm {
+    @media (max-width: 600px) { @content }
+  }
+
+}

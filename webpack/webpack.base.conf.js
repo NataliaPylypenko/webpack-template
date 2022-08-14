@@ -10,7 +10,7 @@ const PATHS = {
   web: path.join(__dirname, '../web')
 }
 
-const PAGES_DIR = PATHS.src
+const PAGES_DIR = `${PATHS.src}/html`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.html'))
 
 module.exports = {
@@ -18,11 +18,10 @@ module.exports = {
     paths: PATHS
   },
   entry: {
-    // module: `${PATHS.src}/your-module.js`,
-    // libs: `${PATHS.src}/js`,
-    common: `${PATHS.src}/js/common.js`, // общий js
-    home: `${PATHS.src}/js/home.js`,
-    news: `${PATHS.src}/js/news.js`
+    // module: ['@babel/polyfill', `${PATHS.src}/js/your-module.js`],
+    common: ['@babel/polyfill', `${PATHS.src}/js/common.js`], // general js
+    home: ['@babel/polyfill', `${PATHS.src}/js/home.js`],
+    news: ['@babel/polyfill', `${PATHS.src}/js/news.js`]
   },
   output: {
     path: PATHS.web,
@@ -31,22 +30,15 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '~': PATHS.src,
+      '@': PATHS.src,
     }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
+        exclude: '/node_modules/',
         loader: 'babel-loader',
-        exclude: '/node_modules/'
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
       },
       {
         test: /\.(jpe?g|png|svg|webp|gif)$/,
@@ -85,12 +77,6 @@ module.exports = {
           chunks: 'all',
           enforce: true
         },
-        // commons: {
-        //   name: 'common',
-        //   test: /\.jsx?$/,
-        //   chunks: 'all',
-        //   enforce: true,
-        // }
       }
     }
   },
@@ -100,16 +86,18 @@ module.exports = {
     }),
 
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
+      { from: `${PATHS.src}/img`, to: `img` },
       { from: `${PATHS.src}/static`, to: 'static' }
     ]),
 
     ...PAGES.map(
       page =>
       new HtmlWebpackPlugin({
+        hash: false,
         template: `${PAGES_DIR}/${page}`,
-        filename: `./html/${page}`,
-        // inject: false
+        filename: `${page}`,
+        title: `${page}`,
+        inject: false,
       })
     )
   ]

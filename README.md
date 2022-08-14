@@ -25,13 +25,11 @@ npm run build
 ## Project Structure:
 
 * `src/js/[name].js` - main application files where you include/import all necessary libraries and modules for initialization
-* `src/js/libs` - put libs here
 * `src/js/modules` - put custom app scripts here
-* `src/html/pages/[name].html` - layout for pages
+* `src/html/[name].html` - layout for pages
 * `src/html/component/[name]/[component].html` - components for pages
 * `src/scss/[name].scss` - main SCSS styles where you include/import all necessary styles. You need to import them in `[name].js`
-* `src/scss/[name]/[component].scss` - put components SCSS styles here. You need to import them in `[name].scss`
-* `src/scss/libs` - put libs SCSS styles here
+* `src/scss/[component]/[name].scss` - put components SCSS styles here. You need to import them in `[name].scss`
 * `src/img` - put images here. You need to use correct path: `img/some.jpg`
 * `src/static/` - folder with extra static assets that will be copied into output folder
 
@@ -53,12 +51,10 @@ const PATHS = {
 1. Install libs
 2. Import libs in `js/[name].js`
 ``` js
-// React example
-import React from 'react'
-// Bootstrap example
-import Bootstrap from 'bootstrap/dist/js/bootstrap.min.js'
+// Swiper example
+import Swiper from 'swiper';
 // or
-import 'bootstrap/dist/js/bootstrap.min.js'
+import '~swiper/swiper-bundle.min.js'
 ```
 
 ## Import only SASS or CSS libs:
@@ -66,7 +62,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 2. Import libs in `scss/[name].scss`
 ``` scss
 // CSS librarys example:
-@import 'libs/swiper/swiper-bundle.min.css';
+@import '~swiper/swiper-bundle.min.css';
 ```
 
 ## Import js files:
@@ -79,43 +75,22 @@ import customCursor from './modules/customCursor'
 
 ## Create Another HTML Files:
 ``` js 
-    const PAGES_DIR = PATHS.src
+    const PAGES_DIR = `${PATHS.src}/html`
     const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.html'))
 
     ...PAGES.map(
-      page =>
-      new HtmlWebpackPlugin({
-        template: `${PAGES_DIR}/${page}`,
-        filename: `./html/${page}`,
-        // inject: false
-      })
-    )
+          page =>
+          new HtmlWebpackPlugin({
+            hash: false,
+            template: `${PAGES_DIR}/${page}`,
+            filename: `${page}`,
+            title: `${page}`,
+            inject: false,
+          })
+        )
 ```
 
 ## Add Fonts:
-
-### First way
-Add @font-face in `/scss/utils/fonts.scss`:
-
-``` scss
-// Example with Montserrat
-@font-face {
-  font-family: "Montserrat-Regular";
-  src: url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.eot'); /* IE9 Compat Modes */
-  src: url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/Montserrat/Regular/Montserrat-Regular.svg') format('svg'); /* Legacy iOS */
-}
-```
-
-Add vars for font in `/assets/scss/utils/vars.scss`:
-
-``` scss
-$mainFont : 'Montserrat-Regular', Helvetica, Arial, sans-serif;
-```
-
-### Second way
 Add @import in `/scss/common.scss`:
 
 ``` scss
@@ -140,7 +115,7 @@ $mainFont : 'Montserrat', sans-serif;
 
 ``` js
 ...
-"homepage": "https://nataliapylypenko.github.io/portfolio/",
+"homepage": "https://nataliapylypenko.github.io/[name_repo]/",
 ...
 "scripts": {
     ...

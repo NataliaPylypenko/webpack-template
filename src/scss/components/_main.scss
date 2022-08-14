@@ -1,0 +1,11 @@
+@import "../utils/media";
+@import "../utils/vars";
+
+body {}
+
+.section-light {
+  padding: 30px 0;
+}
+.section-dark {
+  background-color: $neutral-dark;
+}

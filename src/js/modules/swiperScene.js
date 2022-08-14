@@ -1,3 +1,5 @@
+import Swiper from 'swiper';
+
 function swiperScene() {
 
     const showSlider = new Swiper('.showcase-carousel', {
