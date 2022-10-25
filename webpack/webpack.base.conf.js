@@ -21,7 +21,8 @@ module.exports = {
     // module: ['@babel/polyfill', `${PATHS.src}/js/your-module.js`],
     common: ['@babel/polyfill', `${PATHS.src}/js/common.js`], // general js
     home: ['@babel/polyfill', `${PATHS.src}/js/home.js`],
-    news: ['@babel/polyfill', `${PATHS.src}/js/news.js`]
+    news: ['@babel/polyfill', `${PATHS.src}/js/news.js`],
+    choose_colors: ['@babel/polyfill', `${PATHS.src}/js/choose_colors.js`]
   },
   output: {
     path: PATHS.web,
