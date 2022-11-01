@@ -23,39 +23,57 @@
 <div class="cursor-dot-outline"></div>
 <div class="cursor-dot"></div>
 
-<header class="header">
-    <nav class="header__links">
-        <a href="/" class="header__link p_middle">Main</a>
-        <a href="/news.html" class="header__link p_middle">News</a>
-        <a href="/hoodie_mantle.html" class="header__link p_middle">Hoodie Mantle</a>
-        <a href="/choose_colors.html" class="header__link p_middle">Coose Colors</a>
-    </nav>
-</header>
+<div class="wrapper">
+    <div class="content">
+        <header class="main-header">
+            <div class="layers">
+                <div class="layer__header">
+                    <div class="layer__caption">Welcome to</div>
+                    <div class="layer__title">Fairy Forest</div>
+                </div>
+                <div class="layer layers__base" style="background-image: url(../img/main/layer-base.png);"></div>
+                <div class="layer layers__middle" style="background-image: url(../img/main/layer-middle.png);"></div>
+                <div class="layer layers__front" style="background-image: url(../img/main/layer-front.png);"></div>
+            </div>
+        </header>
 
+        <article class="main-article" style="background-image: url(../img/main/dungeon.jpg);">
+            <div class="main-article__content">
+                <h2 class="main-article__header">
+                    Fairy Forest
+                </h2>
+                <p class="main-article__paragraph">
+                    Fairies Pip, Blossom and Dewdrop are busy making gifts for Princess Flora’s birthday, but Bumble
+                    can’t think what to give. Press out the play pieces and join in all the fun with the three
+                    stunning pop-up play scenes illustrated by Ag Jatkowska.
+                </p>
+            </div>
+        </article>
 
-<section class="section-light"></section>
-
-
-<footer class="footer">
-    <div class="container">
-        <div class="social">
-            <div class="subtitle p_large">Мы в социальных сетях:</div>
-            <a href="#" class="link p_middle">instagram</a>
-            <a href="#" class="link p_middle">facebook</a>
-        </div>
-        <nav class="footer__links">
-            <a href="/" class="footer__link p_middle">Main</a>
-            <a href="/news.html" class="footer__link p_middle">News</a>
-            <a href="/hoodie_mantle.html" class="footer__link p_middle">Hoodie Mantle</a>
-            <a href="/choose_colors.html" class="footer__link p_middle">Coose Colors</a>
-        </nav>
-        <div class="call">
-            <div class="subtitle p_large">Мы в социальных сетях:</div>
-            <a href="#" class="link p_middle">instagram</a>
-            <a href="#" class="link p_middle">facebook</a>
-        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="social">
+                    <div class="subtitle p_large">Мы в социальных сетях:</div>
+                    <a href="#" class="link p_middle">instagram</a>
+                    <a href="#" class="link p_middle">facebook</a>
+                </div>
+                <nav class="footer__links">
+                    <a href="/" class="footer__link p_middle">Main</a>
+                    <a href="/news.html" class="footer__link p_middle">News</a>
+                    <a href="/hoodie_mantle.html" class="footer__link p_middle">Hoodie Mantle</a>
+                    <a href="/choose_colors.html" class="footer__link p_middle">Coose Colors</a>
+                </nav>
+                <div class="call">
+                    <div class="subtitle p_large">Мы в социальных сетях:</div>
+                    <a href="#" class="link p_middle">instagram</a>
+                    <a href="#" class="link p_middle">facebook</a>
+                </div>
+            </div>
+        </footer>
     </div>
-</footer>
+</div>
+
+
 
 <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
     <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
