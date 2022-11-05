@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title><!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="WeGame">
-            <title><%= htmlWebpackPlugin.options.title || 'Webpack Template'%></title>
-            <link href="../static/favicon.ico" rel="icon" >
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WeGame">
+    <title><%= htmlWebpackPlugin.options.title || 'Webpack Template'%></title>
+    <link href="../static/favicon.ico" rel="icon" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet">
+    <link href="/css/vendors.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/hoodie_mantle.css" rel="stylesheet">
+</head>
 
-            <% for (var css in htmlWebpackPlugin.files.css) { %>
-            <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
-            <% } %>
-        </head>
+
 <body class="index-page">
 
 <div id="cursor"></div>
@@ -32,12 +29,10 @@
         <a href="/" class="header__link p_middle">Main</a>
         <a href="/news.html" class="header__link p_middle">News</a>
         <a href="/hoodie_mantle.html" class="header__link p_middle">Hoodie Mantle</a>
-        <a href="/choose_colors.html" class="header__link p_middle">Coose Colors</a>
+        <a href="/choose_colors.html" class="header__link p_middle">Choose Colors</a>
     </nav>
 </header>
 
-
-<!--<section class="section-light"></section>-->
 
 <section class="section-dark showcase">
 
@@ -102,8 +97,6 @@
 
 </section>
 
-<!--<section class="section-light"></section>-->
-
 
 <footer class="footer">
     <div class="container">
@@ -116,7 +109,7 @@
             <a href="/" class="footer__link p_middle">Main</a>
             <a href="/news.html" class="footer__link p_middle">News</a>
             <a href="/hoodie_mantle.html" class="footer__link p_middle">Hoodie Mantle</a>
-            <a href="/choose_colors.html" class="footer__link p_middle">Coose Colors</a>
+            <a href="/choose_colors.html" class="footer__link p_middle">Choose Colors</a>
         </nav>
         <div class="call">
             <div class="subtitle p_large">Мы в социальных сетях:</div>
@@ -126,9 +119,10 @@
     </div>
 </footer>
 
-<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-<% } %>
+<script src="/js/vendors.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/hoodie_mantle.js"></script>
+
 </body>
 </html>
 

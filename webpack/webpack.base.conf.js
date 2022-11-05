@@ -27,7 +27,8 @@ module.exports = {
   },
   output: {
     path: PATHS.web,
-    filename: `js/[name].[chunkhash].js`,
+    // filename: `js/[name].[chunkhash].js`,
+    filename: `js/[name].js`,
     publicPath: '/'
   },
   resolve: {
@@ -84,7 +85,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `css/[name].[contenthash].css`,
+      // filename: `css/[name].[contenthash].css`,
+      filename: `css/[name].css`,
     }),
 
     new CopyWebpackPlugin([

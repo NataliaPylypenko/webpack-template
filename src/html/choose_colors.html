@@ -12,24 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <% for (var css in htmlWebpackPlugin.files.css) { %>
-    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
-    <% } %>
+    <link href="/css/vendors.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/choose_colors.css" rel="stylesheet">
 </head>
 <body class="index-page">
-
-<div id="cursor"></div>
-<div id="aura"></div>
-
-<div class="cursor-dot-outline"></div>
-<div class="cursor-dot"></div>
 
 <header class="header">
     <nav class="header__links">
         <a href="/" class="header__link p_middle">Main</a>
         <a href="/news.html" class="header__link p_middle">News</a>
         <a href="/hoodie_mantle.html" class="header__link p_middle">Hoodie Mantle</a>
-        <a href="/choose_colors.html" class="header__link p_middle">Coose Colors</a>
+        <a href="/choose_colors.html" class="header__link p_middle">Choose Colors</a>
     </nav>
 </header>
 
@@ -87,7 +81,7 @@
             <a href="/" class="footer__link p_middle">Main</a>
             <a href="/news.html" class="footer__link p_middle">News</a>
             <a href="/hoodie_mantle.html" class="footer__link p_middle">Hoodie Mantle</a>
-            <a href="/choose_colors.html" class="footer__link p_middle">Coose Colors</a>
+            <a href="/choose_colors.html" class="footer__link p_middle">Choose Colors</a>
         </nav>
         <div class="call">
             <div class="subtitle p_large">Мы в социальных сетях:</div>
@@ -98,8 +92,10 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-<% } %>
+
+<script src="/js/vendors.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/choose_colors.js"></script>
+
 </body>
 </html>
