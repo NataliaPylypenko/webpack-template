@@ -4,15 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="WeGame">
-    <title>Webpack Template</title>
+    <title><%= htmlWebpackPlugin.options.title || 'Webpack Template'%></title>
     <link href="./static/favicon.ico" rel="icon" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet">
+<!--    <link href="/css/vendors.css" rel="stylesheet">-->
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/news.css" rel="stylesheet">
 </head>
+
+
 <body class="index-page">
 
 <header class="header">
@@ -25,9 +28,40 @@
 </header>
 
 
-<section class="section-light"></section>
-<section class="section-dark"></section>
-<section class="section-light"></section>
+<section class="section-light magic-list">
+
+    <a href="#" class="magic-list__item">
+        <div class="magic-list__header">Mountains</div>
+        <div class="cursor">
+            <div class="cursor__image" style="background-image: url(../img/news/1.jpg)"></div>
+        </div>
+    </a>
+    <a href="#" class="magic-list__item">
+        <div class="magic-list__header">Lightning</div>
+        <div class="cursor">
+            <div class="cursor__image" style="background-image: url(../img/news/2.jpg)"></div>
+        </div>
+    </a>
+    <a href="#" class="magic-list__item">
+        <div class="magic-list__header">Daisies</div>
+        <div class="cursor">
+            <div class="cursor__image" style="background-image: url(../img/news/3.jpg)"></div>
+        </div>
+    </a>
+    <a href="#" class="magic-list__item">
+        <div class="magic-list__header">Sunset</div>
+        <div class="cursor">
+            <div class="cursor__image" style="background-image: url(../img/news/4.jpg)"></div>
+        </div>
+    </a>
+    <a href="#" class="magic-list__item">
+        <div class="magic-list__header">Sky</div>
+        <div class="cursor">
+            <div class="cursor__image" style="background-image: url(../img/news/5.jpg)"></div>
+        </div>
+    </a>
+
+</section>
 
 
 <footer class="footer">
@@ -51,6 +85,7 @@
     </div>
 </footer>
 
+<script src="/js/vendors.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/news.js"></script>
 
